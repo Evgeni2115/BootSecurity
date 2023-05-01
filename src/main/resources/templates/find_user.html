@@ -2,23 +2,38 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Пользователь</title>
+    <title>Edit the list of users</title>
 </head>
-<body  bgcolor="#afeeee">
-<form  action="/logout">
-    <button><h3>Logout</h3></button>
-</form>
-<h1>Найти пользователя</p></h1>
-<table class ="italic">
-    <tr  border="1" bgcolor="#f0f8ff">
-        <th bgcolor="#ffd700"><h2>Id</h2></th>
-        <th><h2>Login</h2></th>
+<body bgcolor="#fae6e6">
+<table>
+    <tr>
+        <td>
+            <h1>Changing data</h1>
+        </td>
     </tr>
     <tr>
-        <h3 ><td bgcolor="#ffd700" th:text="${user.getId()}">ID</td></h3>
-        <h3><td bgcolor="#f0f8ff"  th:text="${user.getUserName()}">Логин</td></h3>
+        <form th:method="patch" th:action="@{/admin/{id}(id=${user.getId()})}" th:object="${user}">
+            <td bgcolor="#ffd700">
+                <label for="id"><h3>ID</h3></label>
+                <input readonly type="number" th:field="*{id}" id="id" placeholder="id">
+            </td>
+            <td bgcolor="#f0f8ff">
+                <label for="userName"><h3>Login</h3></label><input type="text" th:field="*{userName}" id="userName"/>
+                <div th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">userName error</div>
+            </td>
+            <td bgcolor="#f0f8ff">
+                <label for="password"><h3>password</h3></label><input type="text" th:field="*{password}" id="password">
+                <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password error</div>
+            </td>
+        </form>
+    </tr>
+    <tr>
+        <td>
+            <form  action="/logout">
+                <button><h3>Logout</h3></button>
+            </form>
+        </td>
     </tr>
 </table>
-<br>
 </body>
 </html>

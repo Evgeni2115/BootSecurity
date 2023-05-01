@@ -2,24 +2,22 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Новый пользователь</title>
+    <title>new user</title>
 </head>
-<body  bgcolor="#afeeee">
-<form  action="/logout">
-    <button><h3>Logout</h3></button>
-</form>
-<h1>Ввод данных</h1>
-<form  th:method="POST" th:action="@{/admin/new}" th:object="${user}">
-    <h3> <label bgcolor="#f0e68c" for="login">Введите userName</label></h3>
+<body bgcolor="#ffe4e1">
+<h1>Data entry</h1>
+<form th:method="POST" th:action="@{/admin/new}" th:object="${user}">
+    <h3><label for="login">enter userName</label></h3>
     <input type="text" th:field="*{userName}" id="login"/>
-    <br>
-    <label for="password"><h3>Введите пароль</h3></label>
+    <br/>
+    <h3><label for="password">enter password</label></h3>
     <input type="text" th:field="*{password}" id="password"/>
-    <br>
-    </br/>
-    <tr >
-        <th> <form><input type="submit" value="СОЗДАТЬ"/></form></th>
-    </tr>
+    <br/><br/>
+    <button><h3>Logout</h3></button>
+    <br/><br/>
+    <footer>
+        <input type="submit" value="СОЗДАТЬ"/>
+    </footer>
 </form>
 </body>
 </html>

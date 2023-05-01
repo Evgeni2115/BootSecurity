@@ -1,22 +1,35 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<html>
 <head>
   <meta charset="UTF-8">
   <title>Таблица пользователей</title>
+  <style>
+    body {
+      background-color: #f5c7d6;
+    }
+
+    th {
+      background-color: #ffffff;
+    }
+
+    td {
+      background-color: #ffffff;
+    }
+
+    #logout-btn {
+      margin-top: 20px;
+    }
+  </style>
 </head>
-<body bgcolor="#afeeee">
-<form  action="/logout">
-  <button><h3>Logout</h3></button>
-</form>
+<body>
 <table class ="italic"  >
-  <h1>Таблица пользователей</h1>
+  <h1>Users Table</h1>
   <tr border="1" bgcolor="#f0f8ff">
     <th bgcolor="#ffd700"><h2>Id</h2></th>
     <th><h2>LOGIN</h2></th>
     <th bgcolor="b0c4de">
       <form  action="/admin/new">
-        <button><h3>Добавить пользователя</h3></button>
+        <button><h3>Create</h3></button>
       </form>
     </th>
   </tr>
@@ -24,17 +37,19 @@
     <th bgcolor="#ffd700"><a th:href="@{admin/{id}(id=${user.getId()})}" th:utext="${user.getId()}"></a></th>
     <th bgcolor="#f0f8ff" th:utext="${user.getUserName()}"><</th>
     <td bgcolor="b0c4de">
-
       <form th:method="DELETE" th:action="@{/admin/{id}(id=${user.getId()})}">
-        <input type="submit" value="УДАЛИТЬ">
+        <input type="submit" value="delete">
       </form>
       <a th:href="@{/admin/{id}/edit(id=${user.getId()})}">
-
-        <button>РЕДАКТИРОВАТЬ</button></a>
+        <button>update</button>
+      </a>
     </td>
     <td>
     </td>
   </tr></h3>
 </table>
+<form id="logout-btn" action="/logout">
+  <button><h3>Logout</h3></button>
+</form>
 </body>
 </html>
