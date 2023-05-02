@@ -22,11 +22,13 @@
   </style>
 </head>
 <body>
-<table class ="italic"  >
-  <h1>Users Table</h1>
+<h1>Users Table</h1>
+<table>
   <tr border="1" bgcolor="#f0f8ff">
     <th bgcolor="#ffd700"><h2>Id</h2></th>
-    <th><h2>LOGIN</h2></th>
+    <th><h2>Login</h2></th>
+    <th><h2>Last Name</h2></th>
+    <th><h2>Age</h2></th>
     <th bgcolor="b0c4de">
       <form  action="/admin/new">
         <button><h3>Create</h3></button>
@@ -35,7 +37,9 @@
   </tr>
   <tr th:each="user : ${users}">
     <th bgcolor="#ffd700"><a th:href="@{admin/{id}(id=${user.getId()})}" th:utext="${user.getId()}"></a></th>
-    <th bgcolor="#f0f8ff" th:utext="${user.getUserName()}"><</th>
+    <td bgcolor="#f0f8ff" th:utext="${user.getUserName()}"></td>
+    <td bgcolor="#f0f8ff" th:utext="${user.getLastName()}"></td>
+    <td bgcolor="#f0f8ff" th:utext="${user.getAge()}"></td>
     <td bgcolor="b0c4de">
       <form th:method="DELETE" th:action="@{/admin/{id}(id=${user.getId()})}">
         <input type="submit" value="delete">
@@ -44,9 +48,7 @@
         <button>update</button>
       </a>
     </td>
-    <td>
-    </td>
-  </tr></h3>
+  </tr>
 </table>
 <form id="logout-btn" action="/logout">
   <button><h3>Logout</h3></button>

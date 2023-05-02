@@ -39,6 +39,8 @@ public class UserDaoImpl implements UserDao {
         User edit = entityManager.find(User.class, id);
         edit.setUserName(user.getUserName());
         edit.setPassword(user.getPassword());
+        edit.setLastName(user.getLastName());
+        edit.setAge(user.getAge());
     }
 
     @Override

@@ -21,7 +21,7 @@ public class UserController {
     }
 
     @GetMapping("")
-    public String find(@AuthenticationPrincipal User user, Model model) {
+    public String getNewUser(@AuthenticationPrincipal User user, Model model) {
         model.addAttribute("user", user);
         return "find_user";
     }

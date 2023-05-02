@@ -39,7 +39,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    public void configure(AuthenticationManagerBuilder auth)  {
+    public void configure(AuthenticationManagerBuilder auth) {
         try {
             auth.userDetailsService(userDetailsService)
                     .passwordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder());

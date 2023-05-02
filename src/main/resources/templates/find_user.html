@@ -25,6 +25,15 @@
                 <label for="password"><h3>password</h3></label><input type="text" th:field="*{password}" id="password">
                 <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password error</div>
             </td>
+            <td bgcolor="#f0f8ff">
+                <label for="lastName"><h3>lastName</h3></label><input type="text" th:field="*{lastName}" id="lastName">
+                <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">lastName error</div>
+            </td>
+            <td>
+            <td bgcolor="#f0f8ff">
+                <label for="age"><h3>age</h3></label><input type="text" th:field="*{age}" id="age">
+                <div th:if="${#fields.hasErrors('age')}" th:errors="*{age}">age error</div>
+            </td>
         </form>
     </tr>
     <tr>
