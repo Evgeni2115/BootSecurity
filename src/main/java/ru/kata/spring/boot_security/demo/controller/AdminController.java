@@ -1,6 +1,5 @@
 package ru.kata.spring.boot_security.demo.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,14 +15,10 @@ public class AdminController {
 
     private final UserService userService;
 
+
     public AdminController(UserService userService) {
         this.userService = userService;
 
-        User admin = new User();
-        admin.setUserName("admin");
-        admin.setPassword("{noop}admin");
-        admin.setRoles(Collections.singleton(Role.ROLE_ADMIN));
-        userService.createUser(admin);
     }
 
     @GetMapping(value = "")
@@ -42,10 +37,11 @@ public class AdminController {
     @PostMapping("/new")
     public String createRoleForUser(@ModelAttribute("user") User user) {
         Set<Role> roles = new HashSet<>();
-        roles.add(Role.ROLE_USER);
+        roles.add(new Role(2L, "ROLE_USER")); // 2L здесь предполагается, что это id роли пользователя
 
         user.setRoles(roles);
         userService.createUser(user);
+
         return "redirect:/admin";
     }
 
